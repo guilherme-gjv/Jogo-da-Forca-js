@@ -8,27 +8,29 @@
     <title>Jogo da Forca</title>
   </head>
   <body>
-    <div>
-      <h2>Número de letras:</h2>
-      <h2 id="numeroDeLetras"></h2>
-    </div>
-    <h2>Palavra Secreta:</h2>
-    <h1 id="palavraSecreta"></h1>
-    <input id="letraInput" type="text" maxlength="1" />
-    <button onclick="tentativa()">Tentar</button>
-    <h2>Palpites:</h2>
-    <p id="palpites"></p>
-    <button onclick="reiniciar()">Reiniciar</button>
-    <div>
-      <div>cabeça</div>
-      <div>
-        <div>braçoE</div>
-        <div>corpo</div>
-        <div>BraçoDir</div>
+    <div id="main-container">
+      <div class="flex">
+        <h2>Número de letras:</h2>
+        <h2 id="numeroDeLetras"></h2>
       </div>
+      <h2>Palavra Secreta:</h2>
+      <h1 id="palavraSecreta"></h1>
+      <input id="letraInput" type="text" maxlength="1" />
+      <button onclick="tentativa()">Tentar</button>
+      <h2>Palpites:</h2>
+      <p id="palpites"></p>
+      <button onclick="reiniciar()">Reiniciar</button>
       <div>
-        <div>PernaE</div>
-        <div>PernaD</div>
+        <div>cabeça</div>
+        <div>
+          <div>braçoE</div>
+          <div>corpo</div>
+          <div>BraçoDir</div>
+        </div>
+        <div>
+          <div>PernaE</div>
+          <div>PernaD</div>
+        </div>
       </div>
     </div>
     <script src="../js/index.js"></script>

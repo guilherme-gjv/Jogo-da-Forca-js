@@ -84,17 +84,20 @@ function reiniciar() {
   palpites = [];
   palavraSecretaArrayVazio = [];
   erros = 0;
+  setTimeout(() => {
+    recarregarElementos();
+  }, 3000);
 }
 
 function ganhou() {
-  reiniciar();
   vitorias++;
   console.log("ganhou. vitorias: " + vitorias);
+  reiniciar();
 }
 
 function perdeu() {
-  reiniciar();
   console.log("perdeu. derrotas: " + (partidas - vitorias));
+  reiniciar();
 }
 
 function tentativa() {
@@ -119,6 +122,7 @@ function tentativa() {
     verificaPalavraCorreta(letra);
     verificaGanhou();
   }
+  recarregarElementos();
 }
 
 function updateTitulo() {
@@ -133,7 +137,15 @@ function updateTitulo() {
   }
 }
 
+function recarregarElementos() {
+  var numeroDeLetrasTitle = document.getElementById("numeroDeLetras");
+  var palpitesText = document.getElementById("palpites");
+  palpitesText.innerHTML = palpites.toString().toString().replace(",", " ");
+  numeroDeLetrasTitle.innerHTML = palavraSecretaArray.length.toString();
+}
+
 function novaPartida() {
   updateTitulo();
+  recarregarElementos();
   partidas++;
 }

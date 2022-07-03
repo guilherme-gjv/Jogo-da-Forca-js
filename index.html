@@ -8,10 +8,17 @@
     <title>Jogo da Forca</title>
   </head>
   <body>
+    <div>
+      <h2>Número de letras:</h2>
+      <h2 id="numeroDeLetras"></h2>
+    </div>
+    <h2>Palavra Secreta:</h2>
     <h1 id="palavraSecreta">sim</h1>
     <input id="letraInput" type="text" maxlength="1" />
     <button onclick="tentativa()">Tentar</button>
-
+    <h2>Palpites:</h2>
+    <p id="palpites"></p>
     <script src="index.js"></script>
+    <button onclick="reiniciar()">Reiniciar</button>
   </body>
 </html>

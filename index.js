@@ -14,32 +14,27 @@ function adicionarTentativa(letra) {
   for (let i = 0; i < letrasTentativa.length; i++) {
     if (letrasTentativa[i] == letra) {
       encontrado = true;
-      console.log("letra encontrada nas tentativas");
-      return true;
+      tentativas++;
     }
   }
   if (!encontrado && letra != "") {
     letrasTentativa.push(letra);
     console.log(letra + " adicionado em Letras Tentativa");
-    return false;
   }
+  return encontrado;
 }
 
 function setPalavraSecreta(palavra) {
   palavraSecreta = palavra.toUpperCase();
   console.log("palavra definida");
 }
+
 function setPalavraSecretaArrayVazio() {
   let palavraSecretaArrayVazio = [];
   for (let i = 0; i < palavraSecretaArray.length; i++) {
     palavraSecretaArrayVazio.push("_");
   }
   return palavraSecretaArrayVazio;
-}
-
-function tryPalavraSecreta(letra) {
-  const palavra = document.getElementById("palavraSecreta");
-  palavra.innerHTML = palavra.innerHTML + letra;
 }
 
 function verificaPalavraCorreta(letra) {
@@ -64,11 +59,13 @@ function verificaPalavraCorreta(letra) {
 
 function verificaGanhou() {
   if (erros >= maximoTentativas) {
+    console.log("perdeu");
     perdeu();
   }
 
   if (palavraSecretaArray.toString() == palavraSecretaArrayVazio.toString()) {
     console.log("ganhou");
+    ganhou();
     return true;
   } else {
     return false;
@@ -84,10 +81,10 @@ function pegarInput() {
 
 //ainda nao ta funcionando
 function reiniciar() {
+  console.log("reiniciar.");
   palavraSecreta = "";
   tentativas = 0;
   letrasTentativa = [];
-  palavraSecretaArray = [];
   palavraSecretaArrayVazio = [];
   erros = 0;
 }
@@ -99,7 +96,7 @@ function ganhou() {
 }
 
 function perdeu() {
-  console.log("perdeu");
+  reiniciar();
   console.log("perdeu. derrotas: " + (partidas - vitorias));
 }
 

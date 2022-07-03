@@ -126,7 +126,14 @@ function tentativa() {
 
 function updateTitulo() {
   var texto = document.getElementById("palavraSecreta");
-  texto.innerHTML = palavraSecretaArrayVazio;
+  texto.innerHTML = "";
+  for (let i = 0; i < palavraSecretaArray.length; i++) {
+    if (palavraSecretaArray[i] == " ") {
+      texto.innerHTML += "-";
+    } else {
+      texto.innerHTML += palavraSecretaArrayVazio[i] + " ";
+    }
+  }
 }
 
 function novaPartida() {

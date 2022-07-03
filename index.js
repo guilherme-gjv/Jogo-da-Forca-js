@@ -1,7 +1,6 @@
 var palavraSecreta = "natan";
-var letrasTentativa = [];
+var palpites = [];
 const maximoTentativas = 5;
-var tentativas = 0;
 var erros = 0;
 var partidas = 0;
 var vitorias = 0;
@@ -11,22 +10,22 @@ novaPartida();
 
 function adicionarTentativa(letra) {
   let encontrado = false;
-  for (let i = 0; i < letrasTentativa.length; i++) {
-    if (letrasTentativa[i] == letra) {
+  for (let i = 0; i < palpites.length; i++) {
+    if (palpites[i] == letra) {
       encontrado = true;
-      tentativas++;
     }
   }
   if (!encontrado && letra != "") {
-    letrasTentativa.push(letra);
+    palpites.push(letra);
     console.log(letra + " adicionado em Letras Tentativa");
+    encontrado = false;
   }
   return encontrado;
 }
 
 function setPalavraSecreta(palavra) {
   palavraSecreta = palavra.toUpperCase();
-  console.log("palavra definida");
+  console.log("palavra definida: " + palavraSecreta);
 }
 
 function setPalavraSecretaArrayVazio() {
@@ -79,12 +78,10 @@ function pegarInput() {
   return letraInput;
 }
 
-//ainda nao ta funcionando
 function reiniciar() {
   console.log("reiniciar.");
   palavraSecreta = "";
-  tentativas = 0;
-  letrasTentativa = [];
+  palpites = [];
   palavraSecretaArrayVazio = [];
   erros = 0;
 }
@@ -102,17 +99,17 @@ function perdeu() {
 
 function tentativa() {
   var letraInput = pegarInput() || "";
-  var setConstLetra = "";
+  var setAuxLetra = "";
   if (letraInput.length > 1) {
-    setConstLetra = letraInput.charAt(0);
+    setAuxLetra = letraInput.charAt(0);
     console.log(
       "Voce digitou uma palavra, é maior que 1 letra. Convertendo: " +
-        setConstLetra
+        setAuxLetra
     );
   } else {
-    setConstLetra = letraInput;
+    setAuxLetra = letraInput;
   }
-  const letra = setConstLetra.toUpperCase();
+  const letra = setAuxLetra.toUpperCase();
   console.log(letra);
   const letraRepetida = adicionarTentativa(letra);
 

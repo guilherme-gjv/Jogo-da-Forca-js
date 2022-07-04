@@ -126,7 +126,8 @@ function tentativa() {
 }
 
 function updateTitulo() {
-  var texto = document.getElementById("palavraSecreta");
+  const espaco = "&nbsp;"; //caractere de dar espaço
+  let texto = document.getElementById("palavraSecreta");
   texto.innerHTML = "";
   console.log("palavra secreta: " + palavraSecretaArrayVazio);
   console.log("lenfe " + palavraSecretaArrayVazio.length);

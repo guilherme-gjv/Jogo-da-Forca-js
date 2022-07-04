@@ -1,4 +1,33 @@
-var palavraSecreta = sortearPalavraSecreta("natan");
+//definição da classe
+class PalavraSecreta {
+  palavra;
+  dica;
+  constructor(palavra, dica) {
+    this.palavra = palavra;
+    this.dica = dica;
+  }
+
+  getPalavra() {
+    return this.palavra;
+  }
+
+  getDica() {
+    return this.dica;
+  }
+}
+
+//Instanciando as palavras + dicas
+var listaPalavras = [
+  new PalavraSecreta("Brasil", "País da América do Sul."),
+  new PalavraSecreta("Junqueiro", "Cidade de Alagoas."),
+  new PalavraSecreta("Felipe Alencar", "Professor do IFAL."),
+  new PalavraSecreta("Banana", "Fruta amarela."),
+  new PalavraSecreta("Helicoptero", "Veículo aéreo."),
+  new PalavraSecreta("Informatica", "Curso do IFAL."),
+  new PalavraSecreta("Gato", "Animal fofo."),
+];
+
+//O código começa aqui
 var palpites = [];
 const maximoTentativas = 5;
 var erros = 0;

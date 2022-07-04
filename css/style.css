@@ -2,17 +2,144 @@ body {
   margin: 0;
   padding: 0;
   background-color: brown;
+  color: white;
 }
 
 #main-container {
-  background-color: wheat;
+  background-color: rgb(9, 0, 92);
   padding: 3%;
   margin: 0 auto 0 auto;
   width: 80%;
 
-  border-radius: 50px;
+  border-radius: 30px;
+  height: 85vh;
+}
+
+#palpites-div {
+  margin: 3% 0 3% 0;
+  padding: 3% 5% 3% 5%;
+  border-radius: 5px;
+}
+
+#secao-externa {
+  height: 85%;
+}
+
+#pontuacoes {
+  width: 80%;
+  margin: 0 auto 0 auto;
+  justify-content: space-around;
+}
+
+.secao {
+  margin: 2%;
+  padding: 2%;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0.5px rgb(0, 1, 61);
+}
+
+.sombra {
+  box-shadow: 0 5px 10px 0.5px rgb(0, 1, 61);
+}
+
+.azul-escuro {
+  background-color: rgb(9, 0, 92);
+}
+
+.azul {
+  background-color: blue;
+}
+
+.azul-claro {
+  background-color: rgb(3, 0, 151);
+}
+
+.azul-claro-2 {
+  background-color: rgb(45, 66, 255);
+}
+
+.card {
+  padding: 3%;
+  border-radius: 15px;
+}
+
+.card-pontuacao {
+  background-color: rgb(3, 0, 151);
+  box-shadow: 0 5px 10px 0.5px rgb(0, 1, 61);
+  width: 20%;
+  padding: 1%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.margem-y-2 {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.margem-r-4 {
+  margin-right: 4%;
+}
+
+.margem-l-4 {
+  margin-left: 4%;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.altura-card-1 {
+  height: 10rem;
+}
+
+.input {
+}
+
+.btn {
+}
+
+.centraliza {
+  display: flex;
+  margin: 0 auto 0 auto;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.w-20 {
+  width: 20%;
+}
+
+.w-30 {
+  width: 30%;
+}
+
+.w-70 {
+  width: 70%;
+}
+.w-80 {
+  width: 80%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-30 {
+  height: 30%;
 }
 
 .flex {
   display: flex;
+}
+
+.dividir {
+  width: 50%;
+}
+
+.borda {
+  border: 2px solid black;
 }

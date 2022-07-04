@@ -8,56 +8,78 @@
     <title>Jogo da Forca</title>
   </head>
   <body>
-    <section>
-      <div>
-        <h3>Vitórias:</h3>
-        <h3 id="numeroDeVitorias"></h3>
-      </div>
-      <div>
-        <div>
+    <section id="main-container">
+      <section id="pontuacoes" class="flex">
+        <div class="card-pontuacao">
+          <h3>Vitórias:</h3>
+          <h3 id="numeroDeVitorias"></h3>
+        </div>
+        <div class="card-pontuacao">
           <h3>Partidas:</h3>
           <h3 id="numeroDePartidas"></h3>
         </div>
-        <div>
+        <div class="card-pontuacao">
           <h3>Derrotas:</h3>
           <h3 id="numeroDeDerrotas"></h3>
         </div>
+      </section>
+      <div id="secao-externa" class="flex">
+        <section class="secao w-70 azul-claro">
+          <section>
+            <div class="flex altura-card-1">
+              <div class="card azul-claro-2 space-between w-100 sombra">
+                <h2>Palavra Secreta:</h2>
+                <div class="flex space-between">
+                  <div class="w-70">
+                    <h1 id="palavraSecreta"></h1>
+                  </div>
+                  <div class="w-30">
+                    <input
+                      id="letraInput"
+                      class="w-80 vertical centraliza"
+                      type="text"
+                      maxlength="1"
+                    />
+                    <button onclick="tentativa()" class="vertical centraliza">
+                      Tentar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex">
+              <div
+                class="dividir card azul-claro-2 sombra margem-y-2 margem-r-4"
+              >
+                <h2>Dica:</h2>
+                <p id="dica"></p>
+                <span>
+                  <span id="numeroDeLetras"></span>
+                  <span>letras.</span>
+                </span>
+              </div>
+              <div
+                class="card azul-claro-2 dividir space-between vertical sombra margem-y-2 margin-l-4"
+              >
+                <h2>Palpites:</h2>
+                <div id="palpites-div" class="azul sombra">
+                  <p id="palpites"></p>
+                </div>
+                <button onclick="limpar()">Limpar</button>
+                <button onclick="novaPartida()">Nova Partida</button>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section class="azul secao w-30 flex space-between">
+          <h1>corpo do bonequinho</h1>
+          <div class="card-pontuacao h-30">
+            <h3>Erros:</h3>
+            <h3 id="erros"></h3>
+          </div>
+        </section>
       </div>
-    </section>
-    <section>
-      <div>
-        <h2>Palavra Secreta:</h2>
-        <h1 id="palavraSecreta"></h1>
-        <input id="letraInput" type="text" maxlength="1" />
-        <button onclick="tentativa()">Tentar</button>
-      </div>
-      <div>
-        <h2>Dica:</h2>
-        <p id="dica"></p>
-        <span>
-          <span id="numeroDeLetras"></span>
-          <span>letras.</span>
-        </span>
-      </div>
-    </section>
-    <h2>Palpites:</h2>
-    <p id="palpites"></p>
-    <button onclick="limpar()">Limpar</button>
-    <button onclick="novaPartida()">Nova Partida</button>
-    <div>
-      <div>cabeça</div>
-      <div>
-        <div>braçoE</div>
-        <div>corpo</div>
-        <div>BraçoDir</div>
-      </div>
-      <h2>Palavra Secreta:</h2>
-      <h1 id="palavraSecreta"></h1>
-      <input id="letraInput" type="text" maxlength="1" />
-      <button onclick="tentativa()">Tentar</button>
-      <h2>Palpites:</h2>
-      <p id="palpites"></p>
-      <button onclick="reiniciar()">Reiniciar</button>
+      <!--
       <div>
         <div>cabeça</div>
         <div>
@@ -70,7 +92,7 @@
           <div>PernaD</div>
         </div>
       </div>
-    </div>
+    --></section>
     <script src="../js/index.js"></script>
   </body>
 </html>

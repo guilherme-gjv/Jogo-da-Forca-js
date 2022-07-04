@@ -36,11 +36,15 @@
                   <div class="w-30">
                     <input
                       id="letraInput"
-                      class="w-80 vertical centraliza"
+                      class="input w-80 centraliza"
                       type="text"
                       maxlength="1"
+                      placeholder="Digite seu palpite..."
                     />
-                    <button onclick="tentativa()" class="vertical centraliza">
+                    <button
+                      onclick="tentativa()"
+                      class="centraliza btn y-padding"
+                    >
                       Tentar
                     </button>
                   </div>
@@ -65,8 +69,10 @@
                 <div id="palpites-div" class="azul sombra">
                   <p id="palpites"></p>
                 </div>
-                <button onclick="limpar()">Limpar</button>
-                <button onclick="novaPartida()">Nova Partida</button>
+                <button onclick="limpar()" class="btn y-padding">Limpar</button>
+                <button onclick="novaPartida()" class="btn y-padding">
+                  Nova Partida
+                </button>
               </div>
             </div>
           </section>

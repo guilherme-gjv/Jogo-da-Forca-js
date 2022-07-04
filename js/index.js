@@ -213,6 +213,7 @@ function recarregarElementos() {
   let numeroDeVitoriasTitle = document.getElementById("numeroDeVitorias");
   let numeroDeDerrotasTitle = document.getElementById("numeroDeDerrotas");
   let dicaPalavraSorteadaText = document.getElementById("dica");
+  let errosTitle = document.getElementById("erros");
 
   dicaPalavraSorteadaText.innerHTML = dicaPalavraSorteada.toString();
   palpitesText.innerHTML = palpites.toString();
@@ -220,6 +221,7 @@ function recarregarElementos() {
   numeroDePartidasTitle.innerHTML = partidas.toString();
   numeroDeVitoriasTitle.innerHTML = vitorias.toString();
   numeroDeDerrotasTitle.innerHTML = derrotas.toString();
+  errosTitle.innerHTML = erros.toString();
   updateTitulo();
 }
 
@@ -238,6 +240,7 @@ function iniciar() {
 
 function novaPartida() {
   console.log(listaPalavras);
+  limpar(1000);
   iniciar();
   gameOn = true;
   partidas++;

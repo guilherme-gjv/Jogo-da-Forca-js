@@ -1,4 +1,39 @@
-var palavraSecreta = sortearPalavraSecreta("natan");
+//definição da classe
+class PalavraSecreta {
+  palavra;
+  dica;
+  constructor(palavra, dica) {
+    this.palavra = palavra;
+    this.dica = dica;
+  }
+
+  getPalavra() {
+    return this.palavra;
+  }
+
+  getDica() {
+    return this.dica;
+  }
+}
+
+//Instanciando as palavras + dicas
+var listaPalavras = [
+  new PalavraSecreta("Brasil", "País da América do Sul."),
+  new PalavraSecreta("Junqueiro", "Cidade de Alagoas."),
+  new PalavraSecreta("Felipe Alencar", "Professor do IFAL."),
+  new PalavraSecreta("Banana", "Fruta amarela."),
+  new PalavraSecreta("Helicoptero", "Veículo aéreo."),
+  new PalavraSecreta("Informatica", "Curso do IFAL."),
+  new PalavraSecreta("Gato", "Animal fofo."),
+];
+
+//O código começa aqui
+let indiceSorteado = sortearIndicePalavra(listaPalavras);
+var palavraSecreta = definirPalavraSecreta(listaPalavras, indiceSorteado);
+var dicaPalavraSorteada = definirDicaPalavraSecreta(
+  listaPalavras,
+  indiceSorteado
+);
 var palpites = [];
 const maximoTentativas = 5;
 var erros = 0;
@@ -30,11 +65,21 @@ function adicionarTentativa(letra) {
   return encontrado;
 }
 
-function sortearPalavraSecreta(palavra) {
-  //ainda sem uso
-  palavraSecreta = palavra.toUpperCase();
-  console.log("palavra definida: " + palavraSecreta);
-  return palavraSecreta;
+function sortearIndicePalavra(lista) {
+  let indiceSorteado = Math.floor(Math.random() * lista.length);
+  return indiceSorteado;
+}
+
+function definirPalavraSecreta(lista, indiceSorteado) {
+  let palavraSorteada = lista[indiceSorteado].getPalavra();
+  console.log("palavra sorteada: " + palavraSorteada);
+  return palavraSorteada;
+}
+
+function definirDicaPalavraSecreta(lista, indiceSorteado) {
+  let dicaPalavraSorteada = lista[indiceSorteado].getDica();
+  console.log("dica sorteada: " + dicaPalavraSorteada);
+  return dicaPalavraSorteada;
 }
 
 function definirPalavraSecretaArrayVazio(pSecretaArray) {
@@ -167,7 +212,9 @@ function recarregarElementos() {
   let numeroDePartidasTitle = document.getElementById("numeroDePartidas");
   let numeroDeVitoriasTitle = document.getElementById("numeroDeVitorias");
   let numeroDeDerrotasTitle = document.getElementById("numeroDeDerrotas");
+  let dicaPalavraSorteadaText = document.getElementById("dica");
 
+  dicaPalavraSorteadaText.innerHTML = dicaPalavraSorteada.toString();
   palpitesText.innerHTML = palpites.toString();
   numeroDeLetrasTitle.innerHTML = palavraSecretaArray.length.toString();
   numeroDePartidasTitle.innerHTML = partidas.toString();
@@ -177,7 +224,12 @@ function recarregarElementos() {
 }
 
 function iniciar() {
-  palavraSecreta = sortearPalavraSecreta("Jorge Santos");
+  indiceSorteado = sortearIndicePalavra(listaPalavras);
+  palavraSecreta = definirPalavraSecreta(listaPalavras, indiceSorteado);
+  dicaPalavraSorteada = definirDicaPalavraSecreta(
+    listaPalavras,
+    indiceSorteado
+  );
   palavraSecretaArray = definirPalavraSecretaArray(palavraSecreta);
   palavraSecretaArrayVazio =
     definirPalavraSecretaArrayVazio(palavraSecretaArray);
@@ -185,6 +237,7 @@ function iniciar() {
 }
 
 function novaPartida() {
+  console.log(listaPalavras);
   iniciar();
   gameOn = true;
   partidas++;

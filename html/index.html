@@ -8,12 +8,6 @@
     <title>Jogo da Forca</title>
   </head>
   <body>
-    <div>
-      <div>
-        <h2>Número de letras:</h2>
-        <h2 id="numeroDeLetras"></h2>
-      </div>
-    </div>
     <section>
       <div>
         <h3>Vitórias:</h3>
@@ -30,10 +24,22 @@
         </div>
       </div>
     </section>
-    <h2>Palavra Secreta:</h2>
-    <h1 id="palavraSecreta"></h1>
-    <input id="letraInput" type="text" maxlength="1" />
-    <button onclick="tentativa()">Tentar</button>
+    <section>
+      <div>
+        <h2>Palavra Secreta:</h2>
+        <h1 id="palavraSecreta"></h1>
+        <input id="letraInput" type="text" maxlength="1" />
+        <button onclick="tentativa()">Tentar</button>
+      </div>
+      <div>
+        <h2>Dica:</h2>
+        <p id="dica"></p>
+        <span>
+          <span id="numeroDeLetras"></span>
+          <span>letras.</span>
+        </span>
+      </div>
+    </section>
     <h2>Palpites:</h2>
     <p id="palpites"></p>
     <button onclick="limpar()">Limpar</button>

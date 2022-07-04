@@ -212,7 +212,9 @@ function recarregarElementos() {
   let numeroDePartidasTitle = document.getElementById("numeroDePartidas");
   let numeroDeVitoriasTitle = document.getElementById("numeroDeVitorias");
   let numeroDeDerrotasTitle = document.getElementById("numeroDeDerrotas");
+  let dicaPalavraSorteadaText = document.getElementById("dica");
 
+  dicaPalavraSorteadaText.innerHTML = dicaPalavraSorteada.toString();
   palpitesText.innerHTML = palpites.toString();
   numeroDeLetrasTitle.innerHTML = palavraSecretaArray.length.toString();
   numeroDePartidasTitle.innerHTML = partidas.toString();

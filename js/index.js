@@ -128,11 +128,15 @@ function tentativa() {
 function updateTitulo() {
   var texto = document.getElementById("palavraSecreta");
   texto.innerHTML = "";
-  for (let i = 0; i < palavraSecretaArray.length; i++) {
-    if (palavraSecretaArray[i] == " ") {
-      texto.innerHTML += "-";
-    } else {
-      texto.innerHTML += palavraSecretaArrayVazio[i] + " ";
+  console.log("palavra secreta: " + palavraSecretaArrayVazio);
+  console.log("lenfe " + palavraSecretaArrayVazio.length);
+  if (palavraSecretaArrayVazio.length != 0) {
+    for (let i = 0; i < palavraSecretaArray.length; i++) {
+      if (palavraSecretaArray[i] == " ") {
+        texto.innerHTML += espaco;
+      } else {
+        texto.innerHTML += palavraSecretaArrayVazio[i] + " ";
+      }
     }
   }
 }

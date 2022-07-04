@@ -2,10 +2,12 @@ var palavraSecreta = sortearPalavraSecreta("natan");
 var palpites = [];
 const maximoTentativas = 5;
 var erros = 0;
-var partidas = 0;
+var partidas = 1;
 var vitorias = 0;
+var derrotas = 0;
 var palavraSecretaArray = definirPalavraSecretaArray(palavraSecreta);
 novaPartida();
+var gameOn = true;
 
 function adicionarTentativa(letra) {
   let encontrado = false;

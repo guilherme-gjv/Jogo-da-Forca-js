@@ -6,8 +6,14 @@ var partidas = 1;
 var vitorias = 0;
 var derrotas = 0;
 var palavraSecretaArray = definirPalavraSecretaArray(palavraSecreta);
+var palavraSecretaArrayVazio =
+  definirPalavraSecretaArrayVazio(palavraSecretaArray);
 novaPartida();
 var gameOn = true;
+
+function definirPalavraSecretaArray(palavraSecreta) {
+  return palavraSecreta.toUpperCase().split("");
+}
 
 function adicionarTentativa(letra) {
   let encontrado = false;
@@ -32,7 +38,15 @@ function sortearPalavraSecreta(palavra) {
 }
 
 function definirPalavraSecretaArrayVazio(pSecretaArray) {
-  return palavraSecretaArrayVazio;
+  let pSecretaArrayVazio = [];
+  for (let i = 0; i < pSecretaArray.length; i++) {
+    if (palavraSecretaArray[i] == " ") {
+      pSecretaArrayVazio.push(" ");
+    } else {
+      pSecretaArrayVazio.push("_");
+    }
+  }
+  return pSecretaArrayVazio;
 }
 
 function verificaPalavraCorreta(letra) {
@@ -148,10 +162,26 @@ function updateTitulo() {
 }
 
 function recarregarElementos() {
-  var numeroDeLetrasTitle = document.getElementById("numeroDeLetras");
-  var palpitesText = document.getElementById("palpites");
-  palpitesText.innerHTML = palpites.toString().toString().replace(",", " ");
+  let numeroDeLetrasTitle = document.getElementById("numeroDeLetras");
+  let palpitesText = document.getElementById("palpites");
+  let numeroDePartidasTitle = document.getElementById("numeroDePartidas");
+  let numeroDeVitoriasTitle = document.getElementById("numeroDeVitorias");
+  let numeroDeDerrotasTitle = document.getElementById("numeroDeDerrotas");
+
+  palpitesText.innerHTML = palpites.toString();
   numeroDeLetrasTitle.innerHTML = palavraSecretaArray.length.toString();
+  numeroDePartidasTitle.innerHTML = partidas.toString();
+  numeroDeVitoriasTitle.innerHTML = vitorias.toString();
+  numeroDeDerrotasTitle.innerHTML = derrotas.toString();
+  updateTitulo();
+}
+
+function iniciar() {
+  palavraSecreta = sortearPalavraSecreta("Jorge Santos");
+  palavraSecretaArray = definirPalavraSecretaArray(palavraSecreta);
+  palavraSecretaArrayVazio =
+    definirPalavraSecretaArrayVazio(palavraSecretaArray);
+  recarregarElementos();
 }
 
 function novaPartida() {

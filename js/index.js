@@ -1,11 +1,10 @@
-var palavraSecreta = "natan";
+var palavraSecreta = sortearPalavraSecreta("natan");
 var palpites = [];
 const maximoTentativas = 5;
 var erros = 0;
 var partidas = 0;
 var vitorias = 0;
-const palavraSecretaArray = palavraSecreta.toUpperCase().split("");
-var palavraSecretaArrayVazio = setPalavraSecretaArrayVazio();
+var palavraSecretaArray = definirPalavraSecretaArray(palavraSecreta);
 novaPartida();
 
 function adicionarTentativa(letra) {
@@ -23,16 +22,14 @@ function adicionarTentativa(letra) {
   return encontrado;
 }
 
-function setPalavraSecreta(palavra) {
+function sortearPalavraSecreta(palavra) {
+  //ainda sem uso
   palavraSecreta = palavra.toUpperCase();
   console.log("palavra definida: " + palavraSecreta);
+  return palavraSecreta;
 }
 
-function setPalavraSecretaArrayVazio() {
-  let palavraSecretaArrayVazio = [];
-  for (let i = 0; i < palavraSecretaArray.length; i++) {
-    palavraSecretaArrayVazio.push("_");
-  }
+function definirPalavraSecretaArrayVazio(pSecretaArray) {
   return palavraSecretaArrayVazio;
 }
 
@@ -78,29 +75,35 @@ function pegarInput() {
   return letraInput;
 }
 
-function reiniciar() {
+function limpar(timeout) {
   console.log("reiniciar.");
   palavraSecreta = "";
-  palpites = [];
   palavraSecretaArrayVazio = [];
+  palpites = [];
   erros = 0;
+  console.log("psav " + palavraSecretaArrayVazio);
+  gameOn = false;
   setTimeout(() => {
     recarregarElementos();
-  }, 3000);
+  }, timeout);
 }
 
 function ganhou() {
   vitorias++;
   console.log("ganhou. vitorias: " + vitorias);
-  reiniciar();
+  limpar(4000);
 }
 
 function perdeu() {
-  console.log("perdeu. derrotas: " + (partidas - vitorias));
-  reiniciar();
+  derrotas++;
+  console.log("perdeu. derrotas: " + derrotas);
+  limpar(3000);
 }
 
 function tentativa() {
+  if (!gameOn) {
+    novaPartida();
+  }
   var letraInput = pegarInput() || "";
   var setAuxLetra = "";
   if (letraInput.length > 1) {
@@ -150,7 +153,7 @@ function recarregarElementos() {
 }
 
 function novaPartida() {
-  updateTitulo();
-  recarregarElementos();
+  iniciar();
+  gameOn = true;
   partidas++;
 }

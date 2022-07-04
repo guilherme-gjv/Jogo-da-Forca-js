@@ -1,12 +1,19 @@
-var palavraSecreta = "natan";
+var palavraSecreta = sortearPalavraSecreta("natan");
 var palpites = [];
 const maximoTentativas = 5;
 var erros = 0;
-var partidas = 0;
+var partidas = 1;
 var vitorias = 0;
-const palavraSecretaArray = palavraSecreta.toUpperCase().split("");
-var palavraSecretaArrayVazio = setPalavraSecretaArrayVazio();
+var derrotas = 0;
+var palavraSecretaArray = definirPalavraSecretaArray(palavraSecreta);
+var palavraSecretaArrayVazio =
+  definirPalavraSecretaArrayVazio(palavraSecretaArray);
 novaPartida();
+var gameOn = true;
+
+function definirPalavraSecretaArray(palavraSecreta) {
+  return palavraSecreta.toUpperCase().split("");
+}
 
 function adicionarTentativa(letra) {
   let encontrado = false;
@@ -23,17 +30,23 @@ function adicionarTentativa(letra) {
   return encontrado;
 }
 
-function setPalavraSecreta(palavra) {
+function sortearPalavraSecreta(palavra) {
+  //ainda sem uso
   palavraSecreta = palavra.toUpperCase();
   console.log("palavra definida: " + palavraSecreta);
+  return palavraSecreta;
 }
 
-function setPalavraSecretaArrayVazio() {
-  let palavraSecretaArrayVazio = [];
-  for (let i = 0; i < palavraSecretaArray.length; i++) {
-    palavraSecretaArrayVazio.push("_");
+function definirPalavraSecretaArrayVazio(pSecretaArray) {
+  let pSecretaArrayVazio = [];
+  for (let i = 0; i < pSecretaArray.length; i++) {
+    if (palavraSecretaArray[i] == " ") {
+      pSecretaArrayVazio.push(" ");
+    } else {
+      pSecretaArrayVazio.push("_");
+    }
   }
-  return palavraSecretaArrayVazio;
+  return pSecretaArrayVazio;
 }
 
 function verificaPalavraCorreta(letra) {
@@ -78,29 +91,35 @@ function pegarInput() {
   return letraInput;
 }
 
-function reiniciar() {
+function limpar(timeout) {
   console.log("reiniciar.");
   palavraSecreta = "";
-  palpites = [];
   palavraSecretaArrayVazio = [];
+  palpites = [];
   erros = 0;
+  console.log("psav " + palavraSecretaArrayVazio);
+  gameOn = false;
   setTimeout(() => {
     recarregarElementos();
-  }, 3000);
+  }, timeout);
 }
 
 function ganhou() {
   vitorias++;
   console.log("ganhou. vitorias: " + vitorias);
-  reiniciar();
+  limpar(4000);
 }
 
 function perdeu() {
-  console.log("perdeu. derrotas: " + (partidas - vitorias));
-  reiniciar();
+  derrotas++;
+  console.log("perdeu. derrotas: " + derrotas);
+  limpar(3000);
 }
 
 function tentativa() {
+  if (!gameOn) {
+    novaPartida();
+  }
   var letraInput = pegarInput() || "";
   var setAuxLetra = "";
   if (letraInput.length > 1) {
@@ -126,26 +145,47 @@ function tentativa() {
 }
 
 function updateTitulo() {
-  var texto = document.getElementById("palavraSecreta");
+  const espaco = "&nbsp;"; //caractere de dar espaço
+  let texto = document.getElementById("palavraSecreta");
   texto.innerHTML = "";
-  for (let i = 0; i < palavraSecretaArray.length; i++) {
-    if (palavraSecretaArray[i] == " ") {
-      texto.innerHTML += "-";
-    } else {
-      texto.innerHTML += palavraSecretaArrayVazio[i] + " ";
+  console.log("palavra secreta: " + palavraSecretaArrayVazio);
+  console.log("lenfe " + palavraSecretaArrayVazio.length);
+  if (palavraSecretaArrayVazio.length != 0) {
+    for (let i = 0; i < palavraSecretaArray.length; i++) {
+      if (palavraSecretaArray[i] == " ") {
+        texto.innerHTML += espaco;
+      } else {
+        texto.innerHTML += palavraSecretaArrayVazio[i] + " ";
+      }
     }
   }
 }
 
 function recarregarElementos() {
-  var numeroDeLetrasTitle = document.getElementById("numeroDeLetras");
-  var palpitesText = document.getElementById("palpites");
-  palpitesText.innerHTML = palpites.toString().toString().replace(",", " ");
+  let numeroDeLetrasTitle = document.getElementById("numeroDeLetras");
+  let palpitesText = document.getElementById("palpites");
+  let numeroDePartidasTitle = document.getElementById("numeroDePartidas");
+  let numeroDeVitoriasTitle = document.getElementById("numeroDeVitorias");
+  let numeroDeDerrotasTitle = document.getElementById("numeroDeDerrotas");
+
+  palpitesText.innerHTML = palpites.toString();
   numeroDeLetrasTitle.innerHTML = palavraSecretaArray.length.toString();
+  numeroDePartidasTitle.innerHTML = partidas.toString();
+  numeroDeVitoriasTitle.innerHTML = vitorias.toString();
+  numeroDeDerrotasTitle.innerHTML = derrotas.toString();
+  updateTitulo();
+}
+
+function iniciar() {
+  palavraSecreta = sortearPalavraSecreta("Jorge Santos");
+  palavraSecretaArray = definirPalavraSecretaArray(palavraSecreta);
+  palavraSecretaArrayVazio =
+    definirPalavraSecretaArrayVazio(palavraSecretaArray);
+  recarregarElementos();
 }
 
 function novaPartida() {
-  updateTitulo();
-  recarregarElementos();
+  iniciar();
+  gameOn = true;
   partidas++;
 }

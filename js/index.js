@@ -211,10 +211,12 @@ function pegarInput() {
 function limpar(timeout) {
   console.log("reiniciar.");
   palavraSecreta = "";
-  palavraSecretaArrayVazio = [];
+  dicaPalavraSorteada = "";
+  palavraSecretaArrayVazio = [""];
+  palavraSecretaArray = [];
   palpites = [];
   erros = 0;
-  console.log("psav " + palavraSecretaArrayVazio);
+  console.log("limpar: psav - " + palavraSecretaArrayVazio);
   gameOn = false;
   setTimeout(() => {
     recarregarElementos();

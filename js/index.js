@@ -1,4 +1,4 @@
-//definição da classe
+//definição da classe da Palavra
 class PalavraSecreta {
   palavra;
   dica;
@@ -13,6 +13,53 @@ class PalavraSecreta {
 
   getDica() {
     return this.dica;
+  }
+}
+
+//classe do Boneco
+class Boneco {
+  cabeca;
+  bracoEsquerdo;
+  corpo;
+  bracoDireito;
+  pernaEsquerda;
+  pernaDireita;
+  constructor() {
+    console.log("vdd linda");
+    this.cabeca = document.getElementById("cabeca");
+    this.bracoEsquerdo = document.getElementById("braco-esq");
+    this.corpo = document.getElementById("corpo");
+    this.bracoDireito = document.getElementById("braco-dir");
+    this.pernaEsquerda = document.getElementById("perna-esq");
+    this.pernaDireita = document.getElementById("perna-dir");
+  }
+
+  defineCabeca(visibilidade) {
+    this.cabeca.style.visibility = visibilidade || "hidden";
+  }
+  defineBracoEsquerdo(visibilidade) {
+    this.bracoEsquerdo.style.visibility = visibilidade || "hidden";
+  }
+  defineCorpo(visibilidade) {
+    this.corpo.style.visibility = visibilidade || "hidden";
+  }
+  defineBracoDireito(visibilidade) {
+    this.bracoDireito.style.visibility = visibilidade || "hidden";
+  }
+  definePernaEsquerda(visibilidade) {
+    this.pernaEsquerda.style.visibility = visibilidade || "hidden";
+  }
+  definePernaDireita(visibilidade) {
+    this.pernaDireita.style.visibility = visibilidade || "hidden";
+  }
+  restauraBoneco() {
+    const visivel = "visible";
+    this.defineCabeca(visivel);
+    this.defineBracoEsquerdo(visivel);
+    this.defineBracoDireito(visivel);
+    this.defineCorpo(visivel);
+    this.definePernaDireita(visivel);
+    this.definePernaEsquerda(visivel);
   }
 }
 
@@ -35,7 +82,7 @@ var dicaPalavraSorteada = definirDicaPalavraSecreta(
   indiceSorteado
 );
 var palpites = [];
-const maximoTentativas = 5;
+const maximoTentativas = 6;
 var erros = 0;
 var partidas = 1;
 var vitorias = 0;
@@ -43,6 +90,7 @@ var derrotas = 0;
 var palavraSecretaArray = definirPalavraSecretaArray(palavraSecreta);
 var palavraSecretaArrayVazio =
   definirPalavraSecretaArrayVazio(palavraSecretaArray);
+var boneco = new Boneco();
 novaPartida();
 var gameOn = true;
 
@@ -109,6 +157,30 @@ function verificaPalavraCorreta(letra) {
   console.log(palavraSecretaArrayVazio);
   if (!encontrado) {
     erros++;
+    const invisivel = "hidden";
+    switch (erros) {
+      case 1:
+        boneco.definePernaEsquerda(invisivel);
+        break;
+      case 2:
+        boneco.definePernaDireita(invisivel);
+        break;
+      case 3:
+        boneco.defineBracoDireito(invisivel);
+        break;
+      case 4:
+        boneco.defineBracoEsquerdo(invisivel);
+        break;
+      case 5:
+        boneco.defineCorpo(invisivel);
+        break;
+      case 6:
+        boneco.defineCabeca(invisivel);
+        break;
+
+      default:
+        break;
+    }
     console.log("erros: " + erros);
   }
   return encontrado;
@@ -235,6 +307,7 @@ function iniciar() {
   palavraSecretaArray = definirPalavraSecretaArray(palavraSecreta);
   palavraSecretaArrayVazio =
     definirPalavraSecretaArrayVazio(palavraSecretaArray);
+  boneco.restauraBoneco();
   recarregarElementos();
 }
 

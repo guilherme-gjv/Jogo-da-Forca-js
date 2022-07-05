@@ -193,6 +193,9 @@ function verificaGanhou() {
   }
 
   if (palavraSecretaArray.toString() == palavraSecretaArrayVazio.toString()) {
+    if (palavraSecretaArray.toString() == "" || palavraSecretaArrayVazio.toString() == "") {
+      return false
+    }
     console.log("ganhou");
     ganhou();
     return true;

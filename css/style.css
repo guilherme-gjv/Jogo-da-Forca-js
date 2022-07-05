@@ -72,6 +72,11 @@ body {
   text-align: center;
 }
 
+.margem-x-3px {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
 .margem-y-2 {
   margin-top: 2%;
   margin-bottom: 2%;
@@ -123,6 +128,12 @@ body {
   margin: 0 auto 0 auto;
 }
 
+.centraliza-boneco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .vertical {
   display: flex;
   flex-direction: column;
@@ -161,4 +172,22 @@ body {
 
 .borda {
   border: 2px solid black;
+}
+
+.circulo {
+  height: 4rem;
+  width: 4rem;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50%;
+}
+
+.retangulo-1 {
+  height: 7rem;
+  width: 2rem;
+  background-color: black;
+}
+.retangulo-2 {
+  height: 7rem;
+  width: 1.5rem;
+  background-color: black;
 }
